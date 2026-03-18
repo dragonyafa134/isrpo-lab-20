@@ -57,3 +57,25 @@ form.addEventListener("submit", (event) => {
     const age = ageInput.value;
     result.textContent = `Имя ${name} Возраст ${age}`;
 });
+
+const name = usernameInput.value.trim();
+const age = Number(ageInput.value);
+
+if (name === ""){
+    result.textContent = "Ошибка Имя не может быть пустым";
+    result.style.color = "red";
+    usernameInput.focus();
+    return;
+}
+
+if (isNaN(age) || age <= 0 || age > 120){
+    result.textContent = "Ошибка введитк корректный возраст ";
+    result.style.color = "red";
+    ageInput.focus();
+    ageInput.value = "";
+    return;
+}
+
+result.textContent = `Данные ${name} ${age}`;
+result.style.color = "green";
+form.reset();
